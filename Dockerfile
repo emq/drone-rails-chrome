@@ -1,10 +1,9 @@
-FROM circleci/ruby:2.6.3-stretch-node-browsers
+FROM circleci/ruby:2.7.0-buster-node-browsers
 
 USER root
 
-RUN sed '/stretch-backports/{s/^/#/}' /etc/apt/sources.list && \
-    apt-get update && \
-    apt install -y mysql-client && \
+RUN apt-get update && \
+    apt install -y default-mysql-client && \
     rm -rf /var/lib/apt/lists/*
 
 USER circleci
